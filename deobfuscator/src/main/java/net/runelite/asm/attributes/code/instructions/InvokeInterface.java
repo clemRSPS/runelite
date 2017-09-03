@@ -160,7 +160,7 @@ public class InvokeInterface extends Instruction implements InvokeInstruction
 		{
 			return null; // not our class
 		}
-		net.runelite.asm.Method m = otherClass.findMethod(method.getName(), method.getType());
+		net.runelite.asm.Method m = otherClass.findMethodDeep(method.getName(), method.getType());
 		if (m == null)
 		{
 			return null;

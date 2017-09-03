@@ -319,6 +319,15 @@ public class ClassFile
 		{
 			return parent.findMethodDeep(name, type);
 		}
+		
+		for (ClassFile i : interfaces.getMyInterfaces())
+		{
+			Method abstractMethod = i.findMethodDeep(name, type);
+			if (abstractMethod != null)
+			{
+				return abstractMethod;
+			}
+		}
 
 		return null;
 	}
@@ -352,6 +361,15 @@ public class ClassFile
 		if (parent != null)
 		{
 			return parent.findMethodDeep(name);
+		}
+		
+		for (ClassFile i : interfaces.getMyInterfaces())
+		{
+			Method abstractMethod = i.findMethodDeep(name);
+			if (abstractMethod != null)
+			{
+				return abstractMethod;
+			}
 		}
 
 		return null;
